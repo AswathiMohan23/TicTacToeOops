@@ -9,7 +9,6 @@ public class TicTacToeDetails {
     public int[][] getBoard() {
         return board;
     }
-
     public void setBoard() {
         for(int i=0;i<3;i++)
         {
@@ -22,9 +21,6 @@ public class TicTacToeDetails {
         System.out.println("\n");
     }
 
-    public void setBoard(int[][] board) {
-        this.board = board;
-    }
 
     public String getPLAYER1() {
         return PLAYER1;

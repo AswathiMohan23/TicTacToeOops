@@ -1,6 +1,6 @@
 package com.java;
 
-public class TicTacToeGame {
+public class TicTacToe {
     public static void main(String[] args){
         TicTacToeDetails details=new TicTacToeDetails();
         PlayerMethods playerMethods=new PlayerMethods();
