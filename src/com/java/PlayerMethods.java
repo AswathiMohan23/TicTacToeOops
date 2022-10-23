@@ -39,27 +39,89 @@ public class PlayerMethods {
         if ((player.equals("player1")) && ((choice.equals("x")) || (choice.equals("X")))) {
             details.setPLAYER1(choice.toUpperCase());
             System.out.println("player1 has chosen " + details.getPLAYER1() + " so " + otherPlayer + " can take O");
-            game(choice,"player2",otherPlayer);
+            String otherChoice="o";
+            player1(choice,"player1", otherPlayer,otherChoice);
 
         }else if ((player.equals("player1"))&&((choice.equals("o")) || (choice.equals("O")))) {
             details.setPLAYER1(choice.toUpperCase());
             System.out.println("player1 has chosen " + details.getPLAYER1() + " so " + otherPlayer + " can take X");
-            game(choice,"player2", otherPlayer);
+            String otherChoice="x";
+            player1(choice,"player1", otherPlayer,otherChoice);
 
         }
        else if ((player.equals("player2")) && ((choice.equals("x")) || (choice.equals("X")))) {
             details.setPLAYER2(choice.toUpperCase());
             System.out.println("player2 has chosen " + details.getPLAYER2() + " so " + otherPlayer + " can take O");
-            game(choice,"player2", otherPlayer);
+            String otherChoice="o";
+            player2(choice,"player2", otherPlayer,otherChoice);
 
         } else if ((player.equals("player2"))&&((choice.equals("o")) || (choice.equals("O")))) {
-                details.setPLAYER2(choice.toUpperCase());
-                System.out.println("player2 has chosen " + details.getPLAYER2() + " so " + otherPlayer + " can take X");
-                game(choice,"player2", otherPlayer);
+           details.setPLAYER2(choice.toUpperCase());
+           System.out.println("player2 has chosen " + details.getPLAYER2() + " so " + otherPlayer + " can take X");
+           String otherChoice="x";
+            player2(choice,"player2", otherPlayer,otherChoice);
             }
         }
 
-    public void game(String choice, String player, String otherPlayer){
+    public void player1(String choice, String player, String otherPlayer, String otherChoice){
+        System.out.println("Hey player1 !!! its you turn");
+        System.out.println("enter the position");
+        String position=sc.next();
+        for(int i=0;i<3;i++){
+            for(int j=0;j<3;j++){
+                if(gameBoard[i][j].equals(position)){
+                    gameBoard[i][j]=choice.toUpperCase();
+                    System.out.print(gameBoard[i][j] + "\t");
+                }
+            }
+        }
+        System.out.println("board is : ");
+        for (int i = 0; i < 3; i++) {
+            System.out.println();
+            for (int j = 0; j < 3; j++) {
+                System.out.print(gameBoard[i][j] + "\t");
+
+            }
+        }
+        String temp=choice;
+        choice=otherChoice;
+        otherChoice=temp;
+        temp=otherPlayer;
+        otherPlayer=player;
+        player=temp;
+        player2(choice,player,otherPlayer,otherChoice);
+
+    }
+    public void player2(String choice, String player, String otherPlayer, String otherChoice) {
+        System.out.println("Hey player2 !!! its you turn");
+        System.out.println("enter the position");
+        String position = sc.next();
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                if (gameBoard[i][j].equals(position)) {
+                    gameBoard[i][j] = choice.toUpperCase();
+                    System.out.print(gameBoard[i][j] + "\t");
+                }
+            }
+        }
+        System.out.println("board is : ");
+        for (int i = 0; i < 3; i++) {
+            System.out.println();
+            for (int j = 0; j < 3; j++) {
+                System.out.print(gameBoard[i][j] + "\t");
+            }
+        }String temp=choice;
+        choice=otherChoice;
+        otherChoice=temp;
+        temp=otherPlayer;
+        otherPlayer=player;
+        player=temp;
+        player2(choice,player,otherPlayer,otherChoice);
+    }
+
+
+
+/*    public void game(String choice, String player, String otherPlayer){
         System.out.println(player+" !!! its you turn");
         System.out.println("enter the position");
         int position=sc.nextInt();
@@ -80,7 +142,7 @@ public class PlayerMethods {
 
             }
         }
-    }
+    }*/
 
     public void displayGameBoard() {
         for (int i = 0; i < 3; i++) {
