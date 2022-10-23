@@ -10,18 +10,12 @@ public class PlayerMethods {
         int randomCheck = (int) (Math.random() * (2 - 1 + 1) + 1);//Math.random()*(max-min+1)+1;
         switch (randomCheck) {
             case 1:
-                System.out.println("Hey player1!!! choose a letter from the box [X or O]: ");
-                String choice1 = sc.next();
                 String otherPlayer="player2";
-              //  String player="player1";
-                selectChoice(choice1, "player1",otherPlayer);
+                selectChoice("player1",otherPlayer);
                 break;
             case 2:
-                System.out.println("Hey player2!!! choose a letter from the box [X or O]: ");
-                String choice2 = sc.next();
                 otherPlayer="player1";
-                //player="player2";
-                selectChoice(choice2, "player2",otherPlayer);
+                selectChoice("player2",otherPlayer);
                 break;
             default:
                 System.out.println("invalid entry ..... Try again!!!");
@@ -29,7 +23,9 @@ public class PlayerMethods {
         }
     }
 
-    public void selectChoice(String choice, String player, String otherPlayer) {
+    public void selectChoice(String player, String otherPlayer) {
+        System.out.println("Hey "+player+" !!! choose a letter from the box [X or O]: ");
+        String choice = sc.next();
         if ((player.equals("player1")) && ((choice.equals("x")) || (choice.equals("X")))) {
             details.setPLAYER1(choice.toUpperCase());
             System.out.println("player1 has chosen " + details.getPLAYER1() + " so " + otherPlayer + " can take O");
