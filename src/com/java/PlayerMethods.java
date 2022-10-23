@@ -13,15 +13,15 @@ public class PlayerMethods {
                 System.out.println("Hey player1!!! choose a letter from the box [X or O]: ");
                 String choice1 = sc.next();
                 String otherPlayer="player2";
-                String player="player1";
-                selectChoice(choice1, player,otherPlayer);
+              //  String player="player1";
+                selectChoice(choice1, "player1",otherPlayer);
                 break;
             case 2:
                 System.out.println("Hey player2!!! choose a letter from the box [X or O]: ");
                 String choice2 = sc.next();
                 otherPlayer="player1";
-                player="player2";
-                selectChoice(choice2, player,otherPlayer);
+                //player="player2";
+                selectChoice(choice2, "player2",otherPlayer);
                 break;
             default:
                 System.out.println("invalid entry ..... Try again!!!");
@@ -42,7 +42,7 @@ public class PlayerMethods {
             System.out.println("player2 has chosen " + details.getPLAYER2() + " so " + otherPlayer + " can take O");
         } else if ((player.equals("player2"))&&((choice.equals("o")) || (choice.equals("O")))) {
                 details.setPLAYER2(choice.toUpperCase());
-                System.out.println("player2 has chosen " + details.getPLAYER2() + " so " + otherPlayer + " can take O");
+                System.out.println("player2 has chosen " + details.getPLAYER2() + " so " + otherPlayer + " can take X");
             }
         }
 
