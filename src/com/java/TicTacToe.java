@@ -7,7 +7,6 @@ public class TicTacToe {
         System.out.println(" Welcome to Tic-Tac-Toe\n=========================\n"+details.toString());
         playerMethods.board();
         playerMethods.chooseLetter();
-       // playerMethods.Player1();
-       // playerMethods.Player2();
+       // playerMethods.game();
     }
 }
