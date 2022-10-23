@@ -14,14 +14,14 @@ public class PlayerMethods {
                 String choice1 = sc.next();
                 String otherPlayer="player2";
                 String player="player1";
-                compareChoice(choice1, player,otherPlayer);
+                selectChoice(choice1, player,otherPlayer);
                 break;
             case 2:
                 System.out.println("Hey player2!!! choose a letter from the box [X or O]: ");
                 String choice2 = sc.next();
                 otherPlayer="player1";
                 player="player2";
-                compareChoice(choice2, player,otherPlayer);
+                selectChoice(choice2, player,otherPlayer);
                 break;
             default:
                 System.out.println("invalid entry ..... Try again!!!");
@@ -29,7 +29,7 @@ public class PlayerMethods {
         }
     }
 
-    public void compareChoice(String choice, String player, String otherPlayer) {
+    public void selectChoice(String choice, String player, String otherPlayer) {
         if ((player.equals("player1")) && ((choice.equals("x")) || (choice.equals("X")))) {
             details.setPLAYER1(choice.toUpperCase());
             System.out.println("player1 has chosen " + details.getPLAYER1() + " so " + otherPlayer + " can take O");
