@@ -70,13 +70,15 @@ public class PlayerMethods {
     }
 
     public void player1(String choice, String player, String otherPlayer, String otherChoice,String win) {
-        win =winningConditions();
-        System.out.println("win : "+win);
-        if ((win.equals("XXX")) || (win.equals("OOO"))) {
+        String condition=win;
+        condition =winningConditions();
+        System.out.println("win : " + win);
+
+        if ((condition.equals("XXX")) || (condition.equals("OOO"))) {
             System.out.println("Congrats player2!!! you won the game");
             playAgain();
         }
-        while ((win != "XXX") || (win != "OOO")) {
+        while ((condition != "XXX") || (condition != "OOO")) {
             System.out.println("Hey player1 !!! its you turn");
             System.out.println("enter the position");
             String position = sc.next();
@@ -116,12 +118,15 @@ public class PlayerMethods {
     }
 
     public void player2(String choice, String player, String otherPlayer, String otherChoice,String win){
-            win = winningConditions();
-            System.out.println("win : " + win);
-        if ((win.equals("XXX")) || (win.equals("OOO"))) {
+        String condition=win;
+        condition =winningConditions();
+        System.out.println("win : " + win);
+
+        if ((condition.equals("XXX")) || (condition.equals("OOO"))) {
             System.out.println("Congrats player1!!! you won the game");
+            playAgain();
         }
-            while ((win != "XXX") || (win != "OOO")) {
+        while ((condition != "XXX") || (condition != "OOO")) {
                 System.out.println("Hey player2 !!! its you turn");
                 System.out.println("enter the position");
                 String position = sc.next();
@@ -150,10 +155,7 @@ public class PlayerMethods {
                 otherPlayer = player;
                 player = temp;
                 player1(choice, player, otherPlayer, otherChoice, win);
-            }if ((win.equals("XXX")) || (win.equals("OOO"))) {
-            System.out.println("Congrats player2oooooooooo!!! you won the game");
-        }
-
+            }
     }
 
 
@@ -161,15 +163,40 @@ public class PlayerMethods {
         String row1 = (gameBoard[0][0] + gameBoard[0][1] + gameBoard[0][2]);
         String row2 = (gameBoard[1][0] + gameBoard[1][1] + gameBoard[1][2]);
         String row3 = (gameBoard[2][0] + gameBoard[2][1] + gameBoard[2][2]);
-        if ((row1 != "XXX") || (row1 != "OOO")){
+        String colum1 = (gameBoard[0][0] + gameBoard[1][0] + gameBoard[2][0]);
+        String colum2 = (gameBoard[0][1] + gameBoard[1][1] + gameBoard[2][1]);
+        String colum3 = (gameBoard[2][0] + gameBoard[2][1] + gameBoard[2][2]);
+        String leftRightDiagonal=(gameBoard[0][0] + gameBoard[1][1] + gameBoard[2][2]);
+        String rightLeftDiagonal=(gameBoard[0][2] + gameBoard[1][1] + gameBoard[2][0]);
+
+        if ((row1.equals("XXX") || (row1.equals("OOO")))){
             System.out.println(row1);
-            return row1;}
-        else if ((row2 != "XXX") || (row2 != "OOO")){
+            return row1;
+        }
+        else if ((row2.equals("XXX") || (row2.equals("OOO")))){
             System.out.println(row2);
-        return row2;}
-        else if ((row3 != "XXX") || (row3 != "OOO")){
+            return row2;
+        }
+        else if ((row3.equals("XXX") || (row3.equals("OOO")))){
             System.out.println(row3);
             return row3;}
+        else if ((colum1.equals("XXX") || (colum1.equals("OOO")))) {
+            System.out.println(colum1);
+            return colum1;
+        }else if ((colum2.equals("XXX") || (colum2.equals("OOO")))){
+            System.out.println(colum2);
+            return colum2;
+        }
+        else if ((colum3.equals("XXX") || (colum3.equals("OOO")))){
+            System.out.println(colum3);
+            return colum3;
+        }else if ((leftRightDiagonal.equals("XXX") || (leftRightDiagonal.equals("OOO")))){
+            System.out.println(leftRightDiagonal);
+            return leftRightDiagonal;
+        }else if ((rightLeftDiagonal.equals("XXX") || (rightLeftDiagonal.equals("OOO")))){
+            System.out.println(rightLeftDiagonal);
+            return rightLeftDiagonal;
+        }
         return "null";
     }
    /* public String winningConditions() {
