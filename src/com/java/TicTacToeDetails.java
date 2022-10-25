@@ -36,10 +36,9 @@ public class TicTacToeDetails {
     public void setBoard() {
         for (int i = 0; i < 3; i++) {
             System.out.println();
+
             for (int j = 0; j < 3; j++) {
                 System.out.print(gameBoard[i][j] + "\t");
-
-
             }
         }
         System.out.println("\n");

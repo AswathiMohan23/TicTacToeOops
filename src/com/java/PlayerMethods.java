@@ -30,7 +30,7 @@ public class PlayerMethods {
     }
 
     public void displayInitialBoard() {
-        System.out.println("\n===========Here is the board ============");
+        System.out.println("\n@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ HERE IS THE BOARD @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
         details.setBoard();
 
     }
@@ -41,29 +41,29 @@ public class PlayerMethods {
 
     public void selectChoice(String player, String otherPlayer) {
         String win=null;
-        System.out.println("Hey " + player + " !!! choose a letter from the box [X or O]: ");
+        System.out.println("################################## Hey " + player + " !!! choose a letter from the box [X or O]: ##############################################");
         String choice = sc.next();
         if ((player.equals("player1")) && ((choice.equals("x")) || (choice.equals("X")))) {
             details.setPLAYER1(choice.toUpperCase());
-            System.out.println("player1 has chosen " + details.getPLAYER1() + " so " + otherPlayer + " can take O");
+            System.out.println("\nplayer1 has chosen =====> " + details.getPLAYER1() + " ....so " + otherPlayer + " can take =====> O");
             String otherChoice = "o";
             player1(choice, "player1", otherPlayer, otherChoice,win);
 
         } else if ((player.equals("player1")) && ((choice.equals("o")) || (choice.equals("O")))) {
             details.setPLAYER1(choice.toUpperCase());
-            System.out.println("player1 has chosen " + details.getPLAYER1() + " so " + otherPlayer + " can take X");
+            System.out.println("\nplayer1 has chosen =====>" + details.getPLAYER1() + " ....so " + otherPlayer + " can take =====> X");
             String otherChoice = "x";
             player1(choice, "player1", otherPlayer, otherChoice,win);
 
         } else if ((player.equals("player2")) && ((choice.equals("x")) || (choice.equals("X")))) {
             details.setPLAYER2(choice.toUpperCase());
-            System.out.println("player2 has chosen " + details.getPLAYER2() + " so " + otherPlayer + " can take O");
+            System.out.println("\nplayer2 has chosen =====> " + details.getPLAYER2() + " ....so " + otherPlayer + " can take =====> O");
             String otherChoice = "o";
             player2(choice, "player2", otherPlayer, otherChoice,win);
 
         } else if ((player.equals("player2")) && ((choice.equals("o")) || (choice.equals("O")))) {
             details.setPLAYER2(choice.toUpperCase());
-            System.out.println("player2 has chosen " + details.getPLAYER2() + " so " + otherPlayer + " can take X");
+            System.out.println("\nplayer2 has chosen =====> " + details.getPLAYER2() + " ....so " + otherPlayer + " can take =====> X");
             String otherChoice = "x";
             player2(choice, "player2", otherPlayer, otherChoice,win);
         }
@@ -72,14 +72,12 @@ public class PlayerMethods {
     public void player1(String choice, String player, String otherPlayer, String otherChoice,String win) {
         String condition=win;
         condition =winningConditions();
-        System.out.println("win : " + win);
-
         if ((condition.equals("XXX")) || (condition.equals("OOO"))) {
-            System.out.println("Congrats player2!!! you won the game");
+            System.out.println("\n@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ CONGRATS PLAYER2!!! you won the game @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
             playAgain();
         }
         while ((condition != "XXX") || (condition != "OOO")) {
-            System.out.println("Hey player1 !!! its you turn");
+            System.out.println("\n====================================================  Hey player1 !!! its you turn ====================================================");
             System.out.println("enter the position");
             String position = sc.next();
             for (int i = 0; i < 3; i++) {
@@ -112,22 +110,28 @@ public class PlayerMethods {
         System.out.println("choose the options : \n 1: play again\n 2:stop playing");
         int options=sc.nextInt();
         if(options==1){
+            System.out.println("\n \t\t\t\t\t\t\tOKAY!!! LETS PLAY AGAIN!!!!!!");
+            System.out.println("  \t\t\t\t\t\t\t=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*= ");
+
             methods.board();
             methods.chooseLetter();
-        }
+        }else{
+            System.out.println("you have stopped playing the game... bye bye");
+            while(true);}
+
     }
+
+
 
     public void player2(String choice, String player, String otherPlayer, String otherChoice,String win){
         String condition=win;
         condition =winningConditions();
-        System.out.println("win : " + win);
-
         if ((condition.equals("XXX")) || (condition.equals("OOO"))) {
-            System.out.println("Congrats player1!!! you won the game");
+            System.out.println("\n@@@@@@@@@@@@@@@@@@@@@@@@ CONGRATS PLAYER1!!! you won the game@@@@@@@@@@@@@@@@@@@@@");
             playAgain();
         }
         while ((condition != "XXX") || (condition != "OOO")) {
-                System.out.println("Hey player2 !!! its you turn");
+            System.out.println("\n=============================================  Hey player2 !!! its you turn ==============================================");
                 System.out.println("enter the position");
                 String position = sc.next();
 
