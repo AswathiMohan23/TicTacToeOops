@@ -74,6 +74,7 @@ public class PlayerMethods {
         System.out.println("win : "+win);
         if ((win.equals("XXX")) || (win.equals("OOO"))) {
             System.out.println("Congrats player2!!! you won the game");
+            playAgain();
         }
         while ((win != "XXX") || (win != "OOO")) {
             System.out.println("Hey player1 !!! its you turn");
@@ -104,7 +105,15 @@ public class PlayerMethods {
             }
         }
 
-
+    public void playAgain() {
+        PlayerMethods methods=new PlayerMethods();
+        System.out.println("choose the options : \n 1: play again\n 2:stop playing");
+        int options=sc.nextInt();
+        if(options==1){
+            methods.board();
+            methods.chooseLetter();
+        }
+    }
 
     public void player2(String choice, String player, String otherPlayer, String otherChoice,String win){
             win = winningConditions();
