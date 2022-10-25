@@ -3,13 +3,8 @@ package com.java;
 import java.util.Scanner;
 
 public class PlayerMethods {
-    static int p = 0;
     Scanner sc = new Scanner(System.in);
     TicTacToeDetails details = new TicTacToeDetails();
-    //int[][] gameBoard = {{1,2,3}, {4,5,6}, {7,8,9}};
-    // String[][] gameBoard = new String[][]{{"00", "01", "02"}, {"10", "11", "12"}, {"20", "21", "22"}};
-    //String[][] gameBoard = new String[3][3];
-    String point[] = new String[9];
     public String[][] gameBoard = new String[][]{{"1", "2", "3"}, {"4", "5", "6"}, {"7", "8", "9"}};
 
     public void chooseLetter() {
@@ -32,7 +27,6 @@ public class PlayerMethods {
     public void displayInitialBoard() {
         System.out.println("\n@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ HERE IS THE BOARD @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
         details.setBoard();
-
     }
 
     public void board() {
@@ -47,35 +41,36 @@ public class PlayerMethods {
             details.setPLAYER1(choice.toUpperCase());
             System.out.println("\nplayer1 has chosen =====> " + details.getPLAYER1() + " ....so " + otherPlayer + " can take =====> O");
             String otherChoice = "o";
-            player1(choice, "player1", otherPlayer, otherChoice,win);
+            player1(choice, "player1", otherPlayer, otherChoice);
 
         } else if ((player.equals("player1")) && ((choice.equals("o")) || (choice.equals("O")))) {
             details.setPLAYER1(choice.toUpperCase());
             System.out.println("\nplayer1 has chosen =====>" + details.getPLAYER1() + " ....so " + otherPlayer + " can take =====> X");
             String otherChoice = "x";
-            player1(choice, "player1", otherPlayer, otherChoice,win);
+            player1(choice, "player1", otherPlayer, otherChoice);
 
         } else if ((player.equals("player2")) && ((choice.equals("x")) || (choice.equals("X")))) {
             details.setPLAYER2(choice.toUpperCase());
             System.out.println("\nplayer2 has chosen =====> " + details.getPLAYER2() + " ....so " + otherPlayer + " can take =====> O");
             String otherChoice = "o";
-            player2(choice, "player2", otherPlayer, otherChoice,win);
+            player2(choice, "player2", otherPlayer, otherChoice);
 
         } else if ((player.equals("player2")) && ((choice.equals("o")) || (choice.equals("O")))) {
             details.setPLAYER2(choice.toUpperCase());
             System.out.println("\nplayer2 has chosen =====> " + details.getPLAYER2() + " ....so " + otherPlayer + " can take =====> X");
             String otherChoice = "x";
-            player2(choice, "player2", otherPlayer, otherChoice,win);
+            player2(choice, "player2", otherPlayer, otherChoice);
         }
     }
 
-    public void player1(String choice, String player, String otherPlayer, String otherChoice,String win) {
-        String condition=win;
-        condition =winningConditions();
+    public void player1(String choice, String player, String otherPlayer, String otherChoice) {
+        //String condition=win;
+        String condition =winningConditions();
         if ((condition.equals("XXX")) || (condition.equals("OOO"))) {
             System.out.println("\n@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ CONGRATS PLAYER2!!! you won the game @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
             playAgain();
-        }
+        }else
+            System.out.println(condition);
         while ((condition != "XXX") || (condition != "OOO")) {
             System.out.println("\n====================================================  Hey player1 !!! its you turn ====================================================");
             System.out.println("enter the position");
@@ -101,10 +96,9 @@ public class PlayerMethods {
             temp = otherPlayer;
             otherPlayer = player;
             player = temp;
-            player2(choice, player, otherPlayer, otherChoice, win);
+            player2(choice, player, otherPlayer, otherChoice);
             }
         }
-
     public void playAgain() {
         PlayerMethods methods=new PlayerMethods();
         System.out.println("choose the options : \n 1: play again\n 2:stop playing");
@@ -118,20 +112,19 @@ public class PlayerMethods {
         }else{
             System.out.println("you have stopped playing the game... bye bye");
             while(true);}
-
     }
 
-
-
-    public void player2(String choice, String player, String otherPlayer, String otherChoice,String win){
-        String condition=win;
-        condition =winningConditions();
+    public void player2(String choice, String player, String otherPlayer, String otherChoice){
+       // String condition=win;
+        String condition =winningConditions();
         if ((condition.equals("XXX")) || (condition.equals("OOO"))) {
             System.out.println("\n@@@@@@@@@@@@@@@@@@@@@@@@ CONGRATS PLAYER1!!! you won the game@@@@@@@@@@@@@@@@@@@@@");
             playAgain();
         }
+        else
+            System.out.println(condition);
         while ((condition != "XXX") || (condition != "OOO")) {
-            System.out.println("\n=============================================  Hey player2 !!! its you turn ==============================================");
+            System.out.println("\n===================================================  Hey player2 !!! its you turn ==============================================");
                 System.out.println("enter the position");
                 String position = sc.next();
 
@@ -158,7 +151,7 @@ public class PlayerMethods {
                 temp = otherPlayer;
                 otherPlayer = player;
                 player = temp;
-                player1(choice, player, otherPlayer, otherChoice, win);
+                player1(choice, player, otherPlayer, otherChoice);
             }
     }
 
@@ -201,7 +194,7 @@ public class PlayerMethods {
             System.out.println(rightLeftDiagonal);
             return rightLeftDiagonal;
         }
-        return "null";
+        return "Nobody Won";
     }
    /* public String winningConditions() {
         System.out.println("1");
