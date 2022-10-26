@@ -73,10 +73,11 @@ public class PlayerMethods {
                  System.out.println("\n====================================================  Hey player1 !!! its you turn ====================================================");
                  game(choice, player, otherPlayer, otherChoice);
             } else if (player.equals("player2")) {
-                System.out.println("\n====================================================  Hey player1 !!! its you turn ====================================================");
+                System.out.println("\n====================================================  Hey player2 !!! its you turn ====================================================");
                 game(choice, player, otherPlayer, otherChoice);
         }
     }
+
     public void game(String choice, String player, String otherPlayer, String otherChoice) {
         String condition =winningConditions();
         while ((condition != "XXX") || (condition != "OOO")) {
