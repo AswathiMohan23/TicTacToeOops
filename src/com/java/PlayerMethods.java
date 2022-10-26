@@ -79,8 +79,10 @@ public class PlayerMethods {
             for (int i = 0; i < 3; i++) {
                 for (int j = 0; j < 3; j++) {
                     if ((gameBoard[i][j].equals(position))) {
-                        gameBoard[i][j] = choice.toUpperCase();
-                        System.out.print(gameBoard[i][j] + "\t");
+                        if ((gameBoard[i][j].equals(position))) {
+                            gameBoard[i][j] = choice.toUpperCase();
+                            System.out.print(gameBoard[i][j] + "\t");
+                        }
                     }
                 }
             }
@@ -98,21 +100,7 @@ public class PlayerMethods {
             otherPlayer = player;
             player = temp;
             player2(choice, player, otherPlayer, otherChoice);
-            }
         }
-    public void playAgain() {
-        PlayerMethods methods=new PlayerMethods();
-        System.out.println("choose the options : \n 1: play again\n 2:stop playing");
-        int options=sc.nextInt();
-        if(options==1){
-            System.out.println("\n \t\t\t\t\t\t\tOKAY!!! LETS PLAY AGAIN!!!!!!");
-            System.out.println("  \t\t\t\t\t\t\t=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*= ");
-
-            methods.board();
-            methods.chooseLetter();
-        }else{
-            System.out.println("you have stopped playing the game... bye bye");
-            while(true);}
     }
 
     public void player2(String choice, String player, String otherPlayer, String otherChoice){
@@ -155,8 +143,6 @@ public class PlayerMethods {
                 player1(choice, player, otherPlayer, otherChoice);
             }
     }
-
-
     public String winningConditions() {
         String row1 = (gameBoard[0][0] + gameBoard[0][1] + gameBoard[0][2]);
         String row2 = (gameBoard[1][0] + gameBoard[1][1] + gameBoard[1][2]);
@@ -196,5 +182,19 @@ public class PlayerMethods {
             return rightLeftDiagonal;
         }
         return "Nobody Won";
+    }
+    public void playAgain() {
+        PlayerMethods methods=new PlayerMethods();
+        System.out.println("choose the options : \n 1: play again\n 2:stop playing");
+        int options=sc.nextInt();
+        if(options==1){
+            System.out.println("\n \t\t\t\t\t\t\tOKAY!!! LETS PLAY AGAIN!!!!!!");
+            System.out.println("  \t\t\t\t\t\t\t=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*= ");
+
+            methods.board();
+            methods.chooseLetter();
+        }else{
+            System.out.println("you have stopped playing the game... bye bye");
+            while(true);}
     }
    }
