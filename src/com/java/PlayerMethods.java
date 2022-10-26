@@ -42,38 +42,44 @@ public class PlayerMethods {
             details.setPLAYER1(choice.toUpperCase());
             System.out.println("\nplayer1 has chosen =====> " + details.getPLAYER1() + " ....so " + otherPlayer + " can take =====> O");
             String otherChoice = "o";
-            player1(choice, "player1", otherPlayer, otherChoice);
+            game(choice, "player1", otherPlayer, otherChoice);
 
         } else if ((player.equals("player1")) && ((choice.equals("o")) || (choice.equals("O")))) {
             details.setPLAYER1(choice.toUpperCase());
             System.out.println("\nplayer1 has chosen =====>" + details.getPLAYER1() + " ....so " + otherPlayer + " can take =====> X");
             String otherChoice = "x";
-            player1(choice, "player1", otherPlayer, otherChoice);
+            game(choice, "player1", otherPlayer, otherChoice);
 
         } else if ((player.equals("player2")) && ((choice.equals("x")) || (choice.equals("X")))) {
             details.setPLAYER2(choice.toUpperCase());
             System.out.println("\nplayer2 has chosen =====> " + details.getPLAYER2() + " ....so " + otherPlayer + " can take =====> O");
             String otherChoice = "o";
-            player2(choice, "player2", otherPlayer, otherChoice);
+            game(choice, "player2", otherPlayer, otherChoice);
 
         } else if ((player.equals("player2")) && ((choice.equals("o")) || (choice.equals("O")))) {
             details.setPLAYER2(choice.toUpperCase());
             System.out.println("\nplayer2 has chosen =====> " + details.getPLAYER2() + " ....so " + otherPlayer + " can take =====> X");
             String otherChoice = "x";
-            player2(choice, "player2", otherPlayer, otherChoice);
+            game(choice, "player2", otherPlayer, otherChoice);
         }
     }
-
-    public void player1(String choice, String player, String otherPlayer, String otherChoice) {
-        //String condition=win;
-        String condition =winningConditions();
+    public void players(String choice, String player, String otherPlayer, String otherChoice){
+        String condition=winningConditions();
         if ((condition.equals("XXX")) || (condition.equals("OOO"))) {
-            System.out.println("\n@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ CONGRATS PLAYER2!!! you won the game @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+            System.out.println("\n@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ CONGRATS "+otherPlayer+"!!! you won the game @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
             playAgain();
         }else
-            System.out.println(condition);
+            if(player.equals("player1")) {
+                 System.out.println("\n====================================================  Hey player1 !!! its you turn ====================================================");
+                 game(choice, player, otherPlayer, otherChoice);
+            } else if (player.equals("player2")) {
+                System.out.println("\n====================================================  Hey player1 !!! its you turn ====================================================");
+                game(choice, player, otherPlayer, otherChoice);
+        }
+    }
+    public void game(String choice, String player, String otherPlayer, String otherChoice) {
+        String condition =winningConditions();
         while ((condition != "XXX") || (condition != "OOO")) {
-            System.out.println("\n====================================================  Hey player1 !!! its you turn ====================================================");
             System.out.println("enter the position");
             String position = sc.next();
             for (int i = 0; i < 3; i++) {
@@ -99,50 +105,10 @@ public class PlayerMethods {
             temp = otherPlayer;
             otherPlayer = player;
             player = temp;
-            player2(choice, player, otherPlayer, otherChoice);
+            players(choice, player, otherPlayer, otherChoice);
         }
     }
 
-    public void player2(String choice, String player, String otherPlayer, String otherChoice){
-       // String condition=win;
-        String condition =winningConditions();
-        if ((condition.equals("XXX")) || (condition.equals("OOO"))) {
-            System.out.println("\n@@@@@@@@@@@@@@@@@@@@@@@@ CONGRATS PLAYER1!!! you won the game@@@@@@@@@@@@@@@@@@@@@");
-            playAgain();
-        }
-        else
-            System.out.println(condition);
-        while ((condition != "XXX") || (condition != "OOO")) {
-            System.out.println("\n===================================================  Hey player2 !!! its you turn ==============================================");
-                System.out.println("enter the position");
-                String position = sc.next();
-
-                for (int i = 0; i < 3; i++) {
-                    for (int j = 0; j < 3; j++) {
-                        if ((gameBoard[i][j].equals(position))) {
-                            if ((gameBoard[i][j].equals(position))) {
-                                gameBoard[i][j] = choice.toUpperCase();
-                                System.out.print(gameBoard[i][j] + "\t");
-                            }
-                        }
-                    }
-                }
-                System.out.println("board is : ");
-                for (int i = 0; i < 3; i++) {
-                    System.out.println();
-                    for (int j = 0; j < 3; j++) {
-                        System.out.print(gameBoard[i][j] + "\t");
-                    }
-                }
-                String temp = choice;
-                choice = otherChoice;
-                otherChoice = temp;
-                temp = otherPlayer;
-                otherPlayer = player;
-                player = temp;
-                player1(choice, player, otherPlayer, otherChoice);
-            }
-    }
     public String winningConditions() {
         String row1 = (gameBoard[0][0] + gameBoard[0][1] + gameBoard[0][2]);
         String row2 = (gameBoard[1][0] + gameBoard[1][1] + gameBoard[1][2]);
