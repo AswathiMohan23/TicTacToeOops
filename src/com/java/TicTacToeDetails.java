@@ -5,7 +5,7 @@ public class TicTacToeDetails {
     private String PLAYER1;
     private String PLAYER2;
 
-    public void setBoard() {
+    public void setGameBoard() {
         for (int i = 0; i < 3; i++) {
             System.out.println();
 
@@ -14,6 +14,10 @@ public class TicTacToeDetails {
             }
         }
         System.out.println("\n");
+    }
+
+    public String[][] getGameBoard() {
+        return gameBoard;
     }
 
     public String getPLAYER1() {

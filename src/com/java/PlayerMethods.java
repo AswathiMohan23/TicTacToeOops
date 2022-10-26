@@ -5,7 +5,8 @@ import java.util.Scanner;
 public class PlayerMethods {
     Scanner sc = new Scanner(System.in);
     TicTacToeDetails details = new TicTacToeDetails();
-    public String[][] gameBoard = new String[][]{{"1", "2", "3"}, {"4", "5", "6"}, {"7", "8", "9"}};
+    //public String[][] gameBoard = new String[][]{{"1", "2", "3"}, {"4", "5", "6"}, {"7", "8", "9"}};
+    public String[][] gameBoard = details.getGameBoard();
 
     public void chooseLetter() {
         int randomCheck = (int) (Math.random() * (2 - 1 + 1) + 1);//Math.random()*(max-min+1)+1;
@@ -26,7 +27,7 @@ public class PlayerMethods {
 
     public void displayInitialBoard() {
         System.out.println("\n@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ HERE IS THE BOARD @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
-        details.setBoard();
+        details.setGameBoard();
     }
 
     public void board() {
